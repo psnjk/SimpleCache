@@ -1,24 +1,24 @@
 module ram(
-	input [0:31] address,
-	input [0:31] data,
+	input [31:0] address,
+	input [31:0] data,
 	input write,
 	input clk,
 	output response,
-	output [0:31] out
+	output [31:0] out
 );
 
 parameter size = 4096;
-reg [0:size - 1] ram [0:31];
+reg [31:0] ram [size - 1:0];
 
-reg [0:31] prev_address;
-reg [0:31] prev_data;
-reg [0:31] prev_out;
+reg [31:0] prev_address;
+reg [31:0] prev_data;
+reg [31:0] prev_out;
 reg prev_write;
 reg prev_response;
 
 initial 
 begin
-	prev_address = 0;
+	prev_address = address % size;
 	prev_data = 0;
 	prev_response = 0;
 	prev_write = 0;
@@ -37,9 +37,9 @@ begin
 		if (prev_response) 
 		begin
 			if (write)
-				ram[address] = data;
+				ram[prev_address] = data;
 			else
-				prev_out = ram[address];
+				prev_out = ram[prev_address];
 			prev_response = 0;
 		end
 end

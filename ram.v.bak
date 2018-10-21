@@ -18,7 +18,7 @@ reg prev_response;
 
 initial 
 begin
-	prev_address = 0;
+	prev_address = address % size;
 	prev_data = 0;
 	prev_response = 0;
 	prev_write = 0;
@@ -37,9 +37,9 @@ begin
 		if (prev_response) 
 		begin
 			if (write)
-				ram[address] = data;
+				ram[address % size] = data;
 			else
-				prev_out = ram[address];
+				prev_out = ram[address % size];
 			prev_response = 0;
 		end
 end

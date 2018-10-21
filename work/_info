@@ -9,23 +9,65 @@ z2
 cModel Technology
 dD:/Alphy/Doc/work
 vram
-!s110 1540111666
+Z0 !s110 1540118643
 !i10b 1
-!s100 ENh^52JSb6mHYPK>U68<Z3
-Ii6iVLo4`S0DJcDm2jLN3d2
-VDg1SIo80bB@j0V0VzS_@n1
-dD:/Alphy/Doc/GitHub/SimpleCache
-w1540111662
+!s100 4cmHh>iDnk^OYQk<LzP9L3
+IBM:IT:?]E0T=7k^iCoO883
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dD:/Alphy/Doc/GitHub/SimpleCache
+w1540118400
 8D:/Alphy/Doc/GitHub/SimpleCache/ram.v
 FD:/Alphy/Doc/GitHub/SimpleCache/ram.v
 L0 1
-OV;L;10.5b;63
+Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1540111666.000000
+Z4 !s108 1540118643.000000
 !s107 D:/Alphy/Doc/GitHub/SimpleCache/ram.v|
 !s90 -reportprogress|300|-work|work|-stats=none|D:/Alphy/Doc/GitHub/SimpleCache/ram.v|
 !i113 1
-o-work work
-tCvgOpt 0
+Z5 o-work work
+Z6 tCvgOpt 0
+vram_testbench
+R0
+!i10b 1
+!s100 HjiO2X^F_j^WGLEG]fo]Z3
+Igm9K?;JJ_`WEb3O=:1MnV0
+R1
+R2
+w1540118640
+Z7 8D:/Alphy/Doc/GitHub/SimpleCache/ram_testbench.v
+Z8 FD:/Alphy/Doc/GitHub/SimpleCache/ram_testbench.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/Alphy/Doc/GitHub/SimpleCache/ram_testbench.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|D:/Alphy/Doc/GitHub/SimpleCache/ram_testbench.v|
+!i113 1
+R5
+R6
+vrem_testbench
+!s110 1540115298
+!i10b 1
+!s100 T2g7ZN<=^8dEcV;Ygc]0U2
+ISSi94:EkQRJ9JnDg9IYI31
+R1
+R2
+w1540115295
+R7
+R8
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1540115298.000000
+!s107 D:/Alphy/Doc/GitHub/SimpleCache/ram_testbench.v|
+R9
+!i113 1
+R5
+R6
