@@ -1,16 +1,16 @@
 module ram(
 
-input [31:0] address, //address in memory
+	input [31:0] address, //address in memory
 
-input [31:0] data, //data to write
+	input [31:0] data, //data to write
+	
+	input write, //1 - write, 0 - read
 
-input write, //1 - write, 0 - read
+	input clk, //clock cycle state
 
-input clk, //clock cycle state
+	output response, //1 - ram finished writing or reading, 0 - ram busy
 
-output response, //1 - ram finished writing or reading, 0 - ram busy
-
-output [31:0] out
+	output [31:0] out
 );
 
 parameter size = 4096; //size of a ram in bits
@@ -49,7 +49,7 @@ always @(posedge clk)//always works on positive edge, while chache works on nega
 					else
 						temp_out = ram[prev_address];
 					prev_response = 0;
-		end
+				end
 end
 
 
