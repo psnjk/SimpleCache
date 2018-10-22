@@ -32,7 +32,7 @@ begin
 	prev_write = 0;
 end
 
-always @(posedge clk)
+always @(posedge clk)//always works on positive edge, while chache works on negative edge
 	begin
 		if ((prev_address != address % size) || (prev_data != data) || (prev_write != write))
 			begin

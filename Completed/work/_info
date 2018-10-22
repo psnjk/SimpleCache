@@ -1,0 +1,31 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/18.0
+vram
+!s110 1540220504
+!i10b 1
+!s100 ?ZLg3IN=iZV2QCG];AjF^1
+IU409@8BAd?IkOE;oO49ZQ2
+VDg1SIo80bB@j0V0VzS_@n1
+dC:/Users/Jameel/Documents/GitHub/SimpleCache/Completed
+w1540220502
+8C:\Users\Jameel\Documents\GitHub\SimpleCache\Completed\ram.v
+FC:\Users\Jameel\Documents\GitHub\SimpleCache\Completed\ram.v
+L0 1
+OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1540220504.000000
+!s107 C:\Users\Jameel\Documents\GitHub\SimpleCache\Completed\ram.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:\Users\Jameel\Documents\GitHub\SimpleCache\Completed\ram.v|
+!i113 1
+o-work work
+tCvgOpt 0
