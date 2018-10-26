@@ -9,8 +9,8 @@ Simple Cache implementation shoud have 5 workable modules:
 * ram_tb			-testbench for ram
 * cache			-simple cache implementation (Direct-mapped cache)
 * cache_tb		-testbench for cache
-* demonstrative module [^1]	-module to show how other modules perfectly work with each other
+* demonstrative module - module to show how other modules perfectly work with each other
+
+___
 
 Full descriptions for every module:
-
-[^1]: Optional to show something with use of FPGA
