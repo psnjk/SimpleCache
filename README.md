@@ -15,4 +15,9 @@ Simple Cache implementation shoud have 5 workable modules:
 
 ___
 
-Full descriptions for every module:
+### Full descriptions for every module:
+#### 1. Ram:
+#### 2. Ram Testbench:
+#### 3. Direct-mapped cache:
+* A cache where the cache location for a given address is determined from the middle address bits. If the cache line size is 2^n then the bottom n address bits correspond to an offset within a cache entry. If the cache can hold 2^m entries then the next m address bits give the cache location. The remaining top address bits are stored as a "tag" along with the entry.
+#### 4. Cache Testbench: 
