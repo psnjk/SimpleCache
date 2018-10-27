@@ -1,38 +1,49 @@
-module cache_f(
+module cache_no_mode_clever(
 	
-	input [31:0] data,
+	input [31:0] address,	//
 
-	input [31:0] address,
-
-	input clk,
+	input clk,		//
 	
-	output response,
+	output response,	// 0 - cache finished writing or reading, 1 - cache busy
 	
-	output [31:0] out
+	output [31:0] out	//
 );
 
-parameter size = 64;
-parameter index_size = 6;
-parameter size_ram = 4096;
+parameter size = 64;		// cache size
+parameter index_size = 6;	// index size
+parameter size_ram = 4096;	// ram size
 
-reg [31:0] cache [size - 1:0];
-reg [index_size - 1:0] index;
-reg [31 - index_size:0] tag;
-reg [31 - index_size:0] tag_array [size - 1:0];
-reg valid_array [size - 1:0];
+//
+reg [31:0] cache [0:size - 1];
+reg [index_size - 1:0] index;	// for keeping index of current address
+reg [11 - index_size:0] tag;	// for keeping tag of ceurrent address
+reg [11 - index_size:0] tag_array [0:size - 1]; // for all tags in cache
+reg valid_array [0:size - 1]; //0 - there is no data 1 - there is data
 
+//initialization for valid_array and tag_array for using in ram_clever
+initial
+	begin: initialization
+		integer i;
+		for (i = 0; i < size; i = i + 1)
+		begin
+			valid_array[i] = 6'b000000;
+			tag_array[i] = 6'b000000;
+		end
+	end
+
+//previous values
 reg [31:0] prev_address;
-reg [31:0] prev_data;
 reg [31:0] temp_out;
 reg prev_response;
 
+//
 initial
 	begin
 		prev_address = 	0;
-		prev_data = 0;
 		prev_response = 0;
 	end
 
+//
 reg [31:0] data_ram, address_ram;
 reg mode_ram;
 wire [31:0] out_ram;
@@ -47,34 +58,40 @@ ram ram(
 	.response(response_ram)
 );
 
+//
 always @(negedge clk)
 	begin
-		if (prev_address != address % size_ram || prev_data != data)
+		//
+		if (prev_address != address % size_ram)
 			begin
 				prev_address = address % size_ram;
-				prev_data = data;
 				prev_response = 1;
 	
-				tag = prev_address >> index_size;
-				index = prev_address % index_size; 
+				index = address % (size * size_ram);
+				tag = prev_address >> index_size;	//
+				//index = (prev_address << (31 - index_size)) >> (31 - index_size); 		//
 				
+				//
 				if (valid_array[index] == 1 && tag_array[index] == tag)
 					begin
-						//prev_missrate = 0;
+						//no_missrate
 						temp_out = cache[index];
 						prev_response = 0;
 					end
 				else
 					begin
-						data_ram = data;
+						//missrate
+						data_ram = 0;
 						address_ram = address;
-						mode_ram = 0;
-						//prev_missrate = 1;						
+						mode_ram = 0;					
 					end
 			end
 		else
+			//
 			if (prev_response && !response_ram)
 				begin
+					//tag = prev_address >> index_size;	//
+					//index = prev_address % size; 		//
 					valid_array[index] = 1;
 					tag_array[index] = tag;
 					cache[index] = out_ram;
@@ -85,6 +102,5 @@ always @(negedge clk)
 
 assign out = temp_out;
 assign response = prev_response;
-//assign missrate = prev_missrate;
 
 endmodule 

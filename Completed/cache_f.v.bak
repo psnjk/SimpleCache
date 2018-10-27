@@ -93,6 +93,7 @@ always @(negedge clk)
 				begin
 					valid_array[index] = 1;
 					tag_array[index] = tag;
+					cache[index] = out_ram;
 					temp_out = cache[index];
 					prev_response = 0;
 				end	

@@ -49,7 +49,7 @@ reg mode_ram;
 wire [31:0] out_ram;
 wire response_ram;
 
-ram ram(
+ram_clever ram(
 	.data(data_ram),
 	.address(address_ram),
 	.clk(clk),
@@ -67,9 +67,8 @@ always @(negedge clk)
 				prev_address = address % size_ram;
 				prev_response = 1;
 	
-				index = ((address % size) % size_ram);
 				tag = prev_address >> index_size;	//
-				//index = (prev_address << (31 - index_size)) >> (31 - index_size); 		//
+				index = prev_address % index_size; 	//
 				
 				//
 				if (valid_array[index] == 1 && tag_array[index] == tag)
@@ -90,8 +89,6 @@ always @(negedge clk)
 			//
 			if (prev_response && !response_ram)
 				begin
-					//tag = prev_address >> index_size;	//
-					//index = prev_address % size; 		//
 					valid_array[index] = 1;
 					tag_array[index] = tag;
 					cache[index] = out_ram;
@@ -102,5 +99,6 @@ always @(negedge clk)
 
 assign out = temp_out;
 assign response = prev_response;
+//assign missrate = prev_missrate;
 
 endmodule 

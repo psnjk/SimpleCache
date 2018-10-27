@@ -64,7 +64,7 @@ always @(negedge clk)
 				prev_response = 1;
 	
 				tag = prev_address >> index_size;
-				index = prev_address % index_size; 
+				index = prev_address % size; 
 	
 				if (mode)
 					begin
