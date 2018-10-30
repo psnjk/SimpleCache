@@ -1,4 +1,4 @@
-module cache_no_mode_clever(
+module cache_no_mode(
 	
 	input [31:0] address,	//
 
@@ -40,13 +40,15 @@ reg prev_response;
 initial
 	begin
 		prev_address = 	0;
+		tag = 0;
+		index = 0;
 		prev_response = 0;
 	end
 
 //
 reg [31:0] data_ram, address_ram;
 reg mode_ram;
-wire [31:0] out_ram;
+//wire [31:0] out_ram;
 wire response_ram;
 
 ram ram(
@@ -54,7 +56,7 @@ ram ram(
 	.address(address_ram),
 	.clk(clk),
 	.mode(mode_ram),
-	.out(out_ram),
+	//.out(out_ram),
 	.response(response_ram)
 );
 
@@ -67,9 +69,8 @@ always @(negedge clk)
 				prev_address = address % size_ram;
 				prev_response = 1;
 	
-				index = address % (size * size_ram);
 				tag = prev_address >> index_size;	//
-				//index = (prev_address << (31 - index_size)) >> (31 - index_size); 		//
+				index = address % size; 		//
 				
 				//
 				if (valid_array[index] == 1 && tag_array[index] == tag)
@@ -88,13 +89,13 @@ always @(negedge clk)
 			end
 		else
 			//
-			if (prev_response && !response_ram)
+			if (prev_response && response_ram == 0)
 				begin
 					//tag = prev_address >> index_size;	//
-					//index = prev_address % size; 		//
+					//index = address % size; 		//
 					valid_array[index] = 1;
 					tag_array[index] = tag;
-					cache[index] = out_ram;
+					cache[index] = ram.ram[prev_address];
 					temp_out = cache[index];
 					prev_response = 0;
 				end	

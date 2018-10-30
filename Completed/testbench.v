@@ -57,7 +57,7 @@ begin
 end
 
 initial
-$monitor("address = %d data = %d mode = %d out = %d cache = %d index = %b tag = %b prev_address = %b ", address % 4096, data, mode, out, tb.cache.cache[tb.cache.index], tb.cache.index, tb.cache.tag, tb.cache.prev_address);
+$monitor("address = %d data = %d mode = %d out = %d cache = %d index = %b tag = %b prev_address = %b ram = %d", address % 4096, data, mode, out, tb.cache.cache[(address % 64)], tb.cache.index, tb.cache.tag, tb.cache.prev_address, tb.ram.ram[tb.cache.prev_address]);
 
 initial
 $dumpvars;

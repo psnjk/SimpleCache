@@ -4,47 +4,51 @@ module ram(
 
 	input [31:0] data, //data to write
 	
-	input write, //1 - write, 0 - read
+	input mode, //1 - write, 0 - read
 
 	input clk, //clock cycle state
 
-	output response, //1 - ram finished writing or reading, 0 - ram busy
+	output response, //0 - ram finished writing or reading, 1 - ram busy
 
 	output [31:0] out
 );
 
 parameter size = 4096; //size of a ram in bits
 
-reg [31:0] ram [size - 1:0]; //data matrix for ram
+reg [31:0] ram [0:size-1]; //data matrix for ram
 
 //registers for previous values 
 reg [31:0] prev_address;
 reg [31:0] prev_data;
 reg [31:0] temp_out; //temporary to avoid problems
-reg prev_write;
+reg prev_mode;
 reg prev_response;
 
-initial //initial statement for previous values
+//initial statement for previous values
+initial
 begin
 	prev_address = address % size;
 	prev_data = 0;
 	prev_response = 0;
-	prev_write = 0;
+	prev_mode = 0;
 end
 
-always @(posedge clk)//always works on positive edge, while chache works on negative edge
+//always works on positive edge, while chache works on negative edge
+always @(posedge clk)
 	begin
-		if ((prev_address != address % size) || (prev_data != data) || (prev_write != write))
+		//
+		if ((prev_address != address % size) || (prev_data != data) || (prev_mode != mode))
 			begin
 				prev_address = address % size;
 				prev_data = data;
-				prev_write = write;
+				prev_mode = mode;
 				prev_response = 1;
 			end
 		else
 			if (prev_response)
 				begin
-					if (write)
+					//
+					if (mode)
 						ram[prev_address] = data;
 					else
 						temp_out = ram[prev_address];

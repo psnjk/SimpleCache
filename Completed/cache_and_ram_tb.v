@@ -10,11 +10,12 @@ module cache_and_ram_tb(
 //previous values
 reg [31:0] prev_address, prev_data;
 reg prev_mode, prev_response;
+reg temp_out;
 
 //registers for ram
 reg [31:0] ram_address, ram_data;
 reg ram_mode;
-wire [31:0] ram_out;
+//wire [31:0] ram_out;
 wire ram_response;
 
 //registers for cache
@@ -27,8 +28,8 @@ ram ram(
 	.data(ram_data),
 	.mode(ram_mode),
 	.clk(clk),
-	.response(ram_response),
-	.out(ram_out)
+	.response(ram_response)
+//	.out(ram_out)
 );
 
 cache_no_mode cache(
@@ -40,7 +41,6 @@ cache_no_mode cache(
 
 initial
 	begin
-		prev_response = 0;
 		prev_address = 0;
 		prev_data = 0;
 		prev_mode = 0;
@@ -56,28 +56,25 @@ begin
 			prev_data = data;
 			prev_mode = mode;
 			prev_response = 1;
-		end	
-	else
-		if (prev_response)
-		begin
-			//
-			if (prev_mode == 1 && ram_response == 0)
+
+			if (prev_mode == 1)
 				begin
 					ram_address = prev_address;
 					ram_data = prev_data;
-					ram_mode = prev_mode;
-					prev_response = 0;
+					ram_mode = 1;
 				end
-			//
-			if (prev_mode == 0 && cache_response == 0)
-				begin
-					cache_address = prev_address;
-					prev_response = 0;
-				end
-		end
+			else
+				cache_address = prev_address;
+		end	
+	else
+		if (prev_response && !cache.response)
+			begin
+				temp_out = cache.cache[prev_address % cache.index_size];
+				prev_response = 0;	
+			end
 end
 
-assign out = cache_out;
+assign out = temp_out;
 assign response = prev_response;
 
 endmodule 

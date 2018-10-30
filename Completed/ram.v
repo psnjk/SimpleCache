@@ -8,14 +8,14 @@ module ram(
 
 	input clk, //clock cycle state
 
-	output response, //1 - ram finished writing or reading, 0 - ram busy
+	output response, //0 - ram finished writing or reading, 1 - ram busy
 
 	output [31:0] out
 );
 
 parameter size = 4096; //size of a ram in bits
 
-reg [31:0] ram [size - 1:0]; //data matrix for ram
+reg [31:0] ram [0:size-1]; //data matrix for ram
 
 //registers for previous values 
 reg [31:0] prev_address;
@@ -27,7 +27,7 @@ reg prev_response;
 //initial statement for previous values
 initial
 begin
-	prev_address = address % size;
+	prev_address = 0;
 	prev_data = 0;
 	prev_response = 0;
 	prev_mode = 0;
