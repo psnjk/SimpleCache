@@ -67,7 +67,7 @@ begin
 				cache_address = prev_address;
 		end	
 	else
-		if (prev_response && !cache_response)
+		if (prev_response && !cache.response)
 			begin
 				temp_out = cache.cache[prev_address % cache.index_size];
 				prev_response = 0;	

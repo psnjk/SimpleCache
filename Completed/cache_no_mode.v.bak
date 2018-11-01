@@ -20,7 +20,6 @@ reg [11 - index_size:0] tag;	// for keeping tag of ceurrent address
 reg [11 - index_size:0] tag_array [0:size - 1]; // for all tags in cache
 reg valid_array [0:size - 1]; //0 - there is no data 1 - there is data
 
-//initialization for valid_array and tag_array for using in ram_clever
 initial
 	begin: initialization
 		integer i;
@@ -34,7 +33,7 @@ initial
 //previous values
 reg [31:0] prev_address;
 reg [31:0] temp_out;
-reg prev_response;
+reg prev_response, missrate;
 
 //
 initial
@@ -48,7 +47,7 @@ initial
 //
 reg [31:0] data_ram, address_ram;
 reg mode_ram;
-//wire [31:0] out_ram;
+wire [31:0] out_ram;
 wire response_ram;
 
 ram ram(
@@ -56,7 +55,7 @@ ram ram(
 	.address(address_ram),
 	.clk(clk),
 	.mode(mode_ram),
-	//.out(out_ram),
+	.out(out_ram),
 	.response(response_ram)
 );
 
@@ -76,12 +75,14 @@ always @(negedge clk)
 				if (valid_array[index] == 1 && tag_array[index] == tag)
 					begin
 						//no_missrate
+						missrate = 0;
 						temp_out = cache[index];
 						prev_response = 0;
 					end
 				else
 					begin
 						//missrate
+						missrate = 1;
 						data_ram = 0;
 						address_ram = address;
 						mode_ram = 0;					
@@ -91,12 +92,11 @@ always @(negedge clk)
 			//
 			if (prev_response && response_ram == 0)
 				begin
-					//tag = prev_address >> index_size;	//
-					//index = address % size; 		//
+					missrate = 0;
 					valid_array[index] = 1;
 					tag_array[index] = tag;
 					cache[index] = ram.ram[prev_address];
-					temp_out = cache[index];
+					temp_out = out_ram;
 					prev_response = 0;
 				end	
 	end

@@ -9,7 +9,7 @@ z2
 cModel Technology
 dC:/intelFPGA_lite/18.0
 vcache_and_ram_clever_tb
-Z0 !s110 1540907838
+Z0 !s110 1541076187
 !i10b 1
 !s100 QJ3KVP@8`cK22686I:Q7Q0
 I1NNP8C3@WkJ]OUN98`SPh0
@@ -23,20 +23,20 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1540907838.000000
+Z4 !s108 1541076187.000000
 !s107 D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_clever_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_clever_tb.v|
 !i113 1
 Z5 o-work work
 Z6 tCvgOpt 0
 vcache_and_ram_tb
-Z7 !s110 1540907839
+Z7 !s110 1541076188
 !i10b 1
-!s100 R4T9k3j>GNH0ih^1ACJTc3
-IFCn?31EU02lM8UI[4kW:]3
+!s100 70mC[IlMOgIkW9EkB9I_g0
+I6B>^YLeDan9:IXll8GTiU0
 R1
 R2
-w1540907815
+w1540909794
 8D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_tb.v
 FD:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_tb.v
 L0 1
@@ -44,7 +44,7 @@ R3
 r1
 !s85 0
 31
-Z8 !s108 1540907839.000000
+Z8 !s108 1541076188.000000
 !s107 D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_tb.v|
 !i113 1
@@ -74,11 +74,11 @@ R6
 vcache_no_mode
 R0
 !i10b 1
-!s100 ;@Sa^cAeHV7TKK3SQRFo71
-IHHDJT@AoPbkg^Y7a:E?>h1
+!s100 PonlE08diWKaZFbm5c_BD2
+IFC`AYhj>2M@e97lT8Nb0n3
 R1
 R2
-w1540907797
+w1541075840
 8D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_no_mode.v
 FD:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_no_mode.v
 L0 1
@@ -114,28 +114,28 @@ R8
 R5
 R6
 vram
-R7
+!s110 1541076189
 !i10b 1
 !s100 9K@L^3ZD8K1==S4m9n[JR3
-IE@=Xd5jB_l_BBj98QJDe:0
+IlnVSAha149105;[NTzgzP3
 R1
 R2
 w1540907697
-8D:\Alphy\Doc\GitHub\SimpleCache\Completed\ram.v
-FD:\Alphy\Doc\GitHub\SimpleCache\Completed\ram.v
+8D:/Alphy/Doc/GitHub/SimpleCache/Completed/ram.v
+FD:/Alphy/Doc/GitHub/SimpleCache/Completed/ram.v
 L0 1
 R3
 r1
 !s85 0
 31
-R8
-!s107 D:\Alphy\Doc\GitHub\SimpleCache\Completed\ram.v|
-!s90 -reportprogress|300|-work|work|-stats=none|D:\Alphy\Doc\GitHub\SimpleCache\Completed\ram.v|
+!s108 1541076189.000000
+!s107 D:/Alphy/Doc/GitHub/SimpleCache/Completed/ram.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Alphy/Doc/GitHub/SimpleCache/Completed/ram.v|
 !i113 1
 R5
 R6
 vram_clever
-R7
+R0
 !i10b 1
 !s100 K;GzoMFl9kV`n2Cae=7z]0
 IIYkMJTKVkc0_de5Hk0@J31
@@ -177,13 +177,13 @@ R10
 R5
 R6
 vtestbench
-R7
+!s110 1541076193
 !i10b 1
-!s100 II<]W_K[GbZ?6fiZ44oBA0
-I7GO?IAYDEoH7QgZon0Ak;1
+!s100 hz<:MYMI<VojnX1fZ^Z;z2
+IBOJ;[=2n2PQd6CLXIgcgS3
 R1
 R2
-w1540907328
+w1541076169
 8D:/Alphy/Doc/GitHub/SimpleCache/Completed/testbench.v
 FD:/Alphy/Doc/GitHub/SimpleCache/Completed/testbench.v
 L0 1
@@ -191,14 +191,14 @@ R3
 r1
 !s85 0
 31
-R8
+!s108 1541076193.000000
 !s107 D:/Alphy/Doc/GitHub/SimpleCache/Completed/testbench.v|
 !s90 -reportprogress|300|-work|work|-stats=none|D:/Alphy/Doc/GitHub/SimpleCache/Completed/testbench.v|
 !i113 1
 R5
 R6
 vtestbench_for_clevers
-R7
+R0
 !i10b 1
 !s100 M>adA4m:A<ZR[@IT5SDFK1
 IGTjaVgNW1zTXJ6JlkW8?V1
@@ -212,7 +212,7 @@ R3
 r1
 !s85 0
 31
-R8
+R4
 !s107 D:/Alphy/Doc/GitHub/SimpleCache/Completed/testbench_for_clevers.v|
 !s90 -reportprogress|300|-work|work|-stats=none|D:/Alphy/Doc/GitHub/SimpleCache/Completed/testbench_for_clevers.v|
 !i113 1

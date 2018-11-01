@@ -15,7 +15,6 @@ reg temp_out;
 //registers for ram
 reg [31:0] ram_address, ram_data;
 reg ram_mode;
-//wire [31:0] ram_out;
 wire ram_response;
 
 //registers for cache
@@ -29,7 +28,6 @@ ram ram(
 	.mode(ram_mode),
 	.clk(clk),
 	.response(ram_response)
-//	.out(ram_out)
 );
 
 cache_no_mode cache(
@@ -67,9 +65,9 @@ begin
 				cache_address = prev_address;
 		end	
 	else
-		if (prev_response && !cache.response)
+		if (prev_response && cache_response == 0 && ram_response == 0)
 			begin
-				temp_out = cache.cache[prev_address % cache.index_size];
+				temp_out = cache_out;
 				prev_response = 0;	
 			end
 end

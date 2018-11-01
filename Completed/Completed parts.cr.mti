@@ -1,23 +1,16 @@
-D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_tb.v {1 {vlog -work work -stats=none D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_tb.v
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module cache_and_ram_tb
-
-Top level modules:
-	cache_and_ram_tb
-
-} {} {}} D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_clever_tb.v {1 {vlog -work work -stats=none D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_clever_tb.v
+D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_clever_tb.v {1 {vlog -work work -stats=none D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_clever_tb.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module cache_and_ram_clever_tb
 
 Top level modules:
 	cache_and_ram_clever_tb
 
-} {} {}} D:/Alphy/Doc/GitHub/SimpleCache/Completed/ram.v {1 {vlog -work work -stats=none {D:\Alphy\Doc\GitHub\SimpleCache\Completed\ram.v}
+} {} {}} D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_tb.v {1 {vlog -work work -stats=none D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_and_ram_tb.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module ram
+-- Compiling module cache_and_ram_tb
 
 Top level modules:
-	ram
+	cache_and_ram_tb
 
 } {} {}} D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_no_mode.v {1 {vlog -work work -stats=none D:/Alphy/Doc/GitHub/SimpleCache/Completed/cache_no_mode.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -26,12 +19,12 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	cache_no_mode
 
-} {} {}} D:/Alphy/Doc/GitHub/SimpleCache/Completed/testbench.v {1 {vlog -work work -stats=none D:/Alphy/Doc/GitHub/SimpleCache/Completed/testbench.v
+} {} {}} D:/Alphy/Doc/GitHub/SimpleCache/Completed/ram.v {1 {vlog -work work -stats=none D:/Alphy/Doc/GitHub/SimpleCache/Completed/ram.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module testbench
+-- Compiling module ram
 
 Top level modules:
-	testbench
+	ram
 
 } {} {}} D:/Alphy/Doc/GitHub/SimpleCache/Completed/ram_clever.v {1 {vlog -work work -stats=none D:/Alphy/Doc/GitHub/SimpleCache/Completed/ram_clever.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
