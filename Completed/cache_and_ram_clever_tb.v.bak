@@ -3,21 +3,22 @@ module cache_and_ram_clever_tb(
 	input [31:0] data,
 	input clk,
 	input mode,
+	output response,
 	output [31:0] out
 );
 
 //previous values
 reg [31:0] prev_address, prev_data;
-reg prev_mode;
+reg prev_mode, prev_response;
+reg temp_out;
 
 //registers for ram
 reg [31:0] ram_address, ram_data;
 reg ram_mode;
-//wire [31:0] ram_out;
 wire ram_response;
 
 //registers for cache
-reg [31:0] cache_address;
+reg [31:0] cache_address, cache_data;
 wire [31:0] cache_out;
 wire cache_response;
 
@@ -26,11 +27,11 @@ ram_clever ram(
 	.data(ram_data),
 	.mode(ram_mode),
 	.clk(clk),
-	.response(ram_response),
-	//.out(ram_out)
+	.response(ram_response)
 );
 
 cache_no_mode_clever cache(
+	.data(cache_data),
 	.address(cache_address),
 	.clk(clk),
 	.response(cache_response),
@@ -39,6 +40,7 @@ cache_no_mode_clever cache(
 
 initial
 	begin
+		prev_response = 0;
 		prev_address = 0;
 		prev_data = 0;
 		prev_mode = 0;
@@ -53,22 +55,30 @@ begin
 			prev_address = address;
 			prev_data = data;
 			prev_mode = mode;
-		end	
-	else
-		begin
-			// 
-			if (mode && !ram_response)
+			prev_response = 1;
+
+			if (prev_mode == 1)
 				begin
-					ram_address = address;
-					ram_data = data;
-					ram_mode = mode;
+					ram_address = prev_address;
+					ram_data = prev_data;
+					ram_mode = 1;
+					prev_response = 0;
 				end
-			//
-			if (!mode && !cache_response)
-				cache_address = address;
+			else 
+				begin
+					cache_address = prev_address;
+					cache_data = data;				
+				end	
 		end
+	else
+		if (prev_response && cache_response == 0 && ram_response == 0)
+			begin
+				temp_out = cache_out;
+				prev_response = 0;	
+			end
 end
 
-assign out = cache_out;
+assign out = temp_out;
+assign response = prev_response;
 
 endmodule 

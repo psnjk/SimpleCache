@@ -8,7 +8,7 @@ module ram_clever(
 
 	input clk, //clock cycle state
 
-	output response, //1 - ram finished writing or reading, 0 - ram busy
+	output response, //0 - ram finished writing or reading, 1 - ram busy
 
 	output [31:0] out
 );

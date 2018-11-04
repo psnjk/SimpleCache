@@ -18,7 +18,7 @@ reg ram_mode;
 wire ram_response;
 
 //registers for cache
-reg [31:0] cache_address;
+reg [31:0] cache_address, cache_data;
 wire [31:0] cache_out;
 wire cache_response;
 
@@ -31,6 +31,7 @@ ram ram(
 );
 
 cache_no_mode cache(
+	.data(cache_data),
 	.address(cache_address),
 	.clk(clk),
 	.response(cache_response),
@@ -39,6 +40,7 @@ cache_no_mode cache(
 
 initial
 	begin
+		prev_response = 0;
 		prev_address = 0;
 		prev_data = 0;
 		prev_mode = 0;
@@ -60,9 +62,13 @@ begin
 					ram_address = prev_address;
 					ram_data = prev_data;
 					ram_mode = 1;
+					prev_response = 0;
 				end
 			else
-				cache_address = prev_address;
+				begin
+					cache_address = prev_address;
+					cache_data = data;
+				end
 		end	
 	else
 		if (prev_response && cache_response == 0 && ram_response == 0)

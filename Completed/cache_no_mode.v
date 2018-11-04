@@ -1,6 +1,6 @@
 module cache_no_mode(
 	
-	input [31:0] address,	//
+	input [31:0] address, data,	//
 
 	input clk,		//
 	
@@ -32,12 +32,14 @@ initial
 
 //previous values
 reg [31:0] prev_address;
+reg [31:0] prev_data;
 reg [31:0] temp_out;
 reg prev_response, missrate;
 
 //
 initial
 	begin
+		prev_data = 0;
 		prev_address = 	0;
 		tag = 0;
 		index = 0;
@@ -63,7 +65,7 @@ ram ram(
 always @(negedge clk)
 	begin
 		//
-		if (prev_address != address % size_ram)
+		if (prev_address != address % size_ram || prev_data != data)
 			begin
 				prev_address = address % size_ram;
 				prev_response = 1;
@@ -90,18 +92,19 @@ always @(negedge clk)
 			end
 		else
 			//
-			if (prev_response && response_ram == 0)
+			if (prev_response == 1 && response_ram == 0)
 				begin
 					missrate = 0;
 					valid_array[index] = 1;
 					tag_array[index] = tag;
-					cache[index] = ram.ram[prev_address];
+					cache[index] = out_ram;
+					//cache[index] = 0;
 					temp_out = out_ram;
 					prev_response = 0;
 				end	
 	end
 
-assign out = ram.ram[prev_address];
+assign out = temp_out;
 assign response = prev_response;
 
 endmodule 

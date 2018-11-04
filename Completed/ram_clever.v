@@ -60,7 +60,7 @@ always @(posedge clk)
 						tag = prev_address >> cache.index_size;
 						index = prev_address % cache.size;						
 						if (cache.valid_array[index] == 1 && cache.tag_array[index] == tag)
-							cache.valid_array[index] = 0;
+							cache.cache[index] = data;
 					end
 					else
 						temp_out = ram[prev_address];
