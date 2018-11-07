@@ -57,7 +57,7 @@ begin
 end
 
 initial
-$monitor("address = %d data = %d mode = %d out = %d cache = %d index = %b valid_array = %b tag_array = %b prev_response = %b missrate = %b prev_address = %d ram = %d", address % 4096, data, mode, out, tb.cache.cache[tb.cache.index], tb.cache.index, tb.cache.valid_array[tb.cache.index], tb.cache.tag_array[tb.cache.index], tb.cache.prev_response, tb.cache.missrate, tb.cache.prev_address, tb.ram.ram[tb.cache.prev_address]);
+$monitor("address = %d data = %d mode = %d out = %d", address % 4096, data, mode, out);
 
 always #25 clk = ~clk;
 

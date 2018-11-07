@@ -27,7 +27,7 @@ reg prev_response;
 //initial statement for previous values
 initial
 begin
-	prev_address = address % size;
+	prev_address = 0;
 	prev_data = 0;
 	prev_response = 0;
 	prev_mode = 0;
