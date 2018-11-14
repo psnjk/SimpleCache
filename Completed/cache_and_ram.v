@@ -35,7 +35,7 @@ begin
 			prev_data = data;
 			prev_mode = mode;
 			
-			tag = prev_address >> cache.index_size;	// tag = first bits of address except index ones
+			tag = prev_address >> cache.index_size;	// tag = first bits of address except index ones (In our particular case - 6)
 			index = address % cache.size; 		// index value = last n (n = size of cache) bits of address
 				
 			if (mode == 1)
