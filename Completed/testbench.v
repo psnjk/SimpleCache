@@ -4,7 +4,7 @@ reg [31:0] address, data;
 reg mode, clk;
 wire [31:0] out;
 
-cache_and_ram_tb tb(
+cache_and_ram tb(
 	.address(address),
 	.data(data),
 	.mode(mode),
