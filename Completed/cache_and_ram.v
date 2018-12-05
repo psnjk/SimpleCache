@@ -26,7 +26,7 @@ initial
 		prev_mode = 0;
 	end
 
-always @(edge clk)
+	always @(posedge clk)
 begin
 	//check if the new input is updated
 	if (prev_address != address || prev_data != data || prev_mode != mode)
