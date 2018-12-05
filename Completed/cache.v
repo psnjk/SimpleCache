@@ -13,7 +13,7 @@ initial
 		integer i;
 		for (i = 0; i < size; i = i + 1)
 		begin
-			valid_array[i] = 6'b000000;
+			valid_array[i] = 1'b0;
 			tag_array[i] = 6'b000000;
 		end
 	end
