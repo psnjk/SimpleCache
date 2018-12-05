@@ -2,7 +2,7 @@ module cache_and_ram(
 	input [31:0] address,
 	input [31:0] data,
 	input clk,
-	input mode,
+	input mode,	//mode equal to 1 when we write and equal to 0 when we read
 	output [31:0] out
 );
 
