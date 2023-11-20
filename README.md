@@ -20,6 +20,7 @@ The implementation consists of such modules:
 
 ### RAM module:
 <spoiler title="Code">
+
 ```verilog
 module ram();
 
@@ -38,8 +39,9 @@ Module represents memory which is used as RAM. It has 4096 32-bit addressable ce
 <img src="https://habrastorage.org/webt/03/an/bx/03anbxhid6b_h5kyzrz5ia6dzzc.png" />
 ---
 
-###Cache module:
+### Cache module:
 <spoiler title="Code">
+
 ```verilog
 module cache();
 
@@ -63,6 +65,7 @@ initial
 
 endmodule 
 ```
+
 </spoiler>
 <spoiler title="Description">
 So the cache contains more than just copies of the data in
@@ -72,8 +75,9 @@ verify its validity.
 <img src="https://habrastorage.org/webt/oy/xg/gw/oyxggwb5ikbgmkyn3mycpj1ft-y.png" />
 ---
 
-###Cache and RAM module:
+### Cache and RAM module:
 <spoiler title="Code">
+
 ```verilog
 module cache_and_ram(
 	input [31:0] address,
